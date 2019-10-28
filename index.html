@@ -9,120 +9,35 @@
 
     <link rel="stylesheet" href="bootstrap-4.3.1-dist/css/bootstrap.min.css">
     <script src="bootstrap-4.3.1-dist/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="index.js"></script>
 </head>
 
 <body>
     <div class="container text-center">
         <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
             <div class="btn-group mx-fluid mr-2" role="group" aria-label="First group">
-                <button type="button" onclick="setNumber(1)" class="btn btn-secondary">1</button>
-                <button type="button" onclick="setNumber(2)" class="btn btn-secondary">2</button>
-                <button type="button" onclick="setNumber(3)" class="btn btn-secondary">3</button>
-                <button type="button" onclick="setNumber(4)" class="btn btn-secondary">4</button>
+                <button type="button" onclick="setNumber(1)" class="btn btn-secondary checked">1</button>
+                <button type="button" onclick="" class="btn btn-secondary" disabled>2</button>
+                <button type="button" onclick="" class="btn btn-secondary" disabled>3</button>
+                <button type="button" onclick="" class="btn btn-secondary" disabled>4</button>
                 <button type="button" onclick="setNumber(5)" class="btn btn-secondary">5</button>
             </div>
             <div class="btn-group mx-fluid" role="group" aria-label="Second group">
                 <button type="button" onclick="random()" class="btn btn-secondary">Começar</button>
+                <button type="button" onclick="location.reload()" class="btn btn-danger">Recomeçar</button>
             </div>
         </div>
     </div>
-
     <div class="top-escolhidos container text-center mb-5">
         <table id="escolhidos">
-
         </table>
     </div>
-
+    
     <div class="table-div container text-center">
         <table id="table">
         </table>
     </div>
 
-    <script>
-        var number = 1;
-        var seconds = 0;
-        var numberList = [1,2,3,4];
-
-        var indexRight = [];
-        var indexWrong = [];
-        
-        function setNumber(n) {
-            number = n;
-        }
-
-
-        function random() {
-            start();
-            var table = document.getElementById("table");
-            var escolhidos = document.getElementById("escolhidos");
-            table.innerHTML = "";
-            escolhidos.innerHTML = "";
-            var count = 1;
-
-            var escolhido_row = escolhidos.insertRow(0);
-            for (var i = 1; i <= 4; i++) {
-                var cell = escolhido_row.insertCell(0);
-                var img = document.createElement("img");
-                img.src = "images/"+number+"/" + i + ".png";
-                cell.appendChild(img);
-            }
-
-            //------------ TABLE -----------//
-            // rows
-            for (var i = 0; i <= 21; i++) {
-                var row = table.insertRow(i);
-
-                // TODO: ADD A ARRAY HERE TO PUT THE RANDOMS NUMBERS
-                //       TO DON'T PUT THE SAME SIGN TOGUETER
-                
-                // cells
-                for (var j = 0; j <= 11; j++) {
-                    var cell = row.insertCell(j);
-                    var img = document.createElement("img");
-                    var random = Math.floor((Math.random() * 8) + 1);
-                    //console.log(img.id);
-                    img.alt = random;
-                    img.id = count++;
-                    img.src = "images/"+number+"/" + random + ".png";
-                    cell.appendChild(img);
-                }
-            }
-            table.addEventListener("click", function (e) {
-                if (e.target.nodeName == "IMG") {
-                    e.target.style.opacity = 0.1;
-                    for(var i=0; i<4;i++){
-                        if(e.target.alt == numberList[i]){
-                            console.log('Certo');
-                            indexRight.push(e.target.id);
-                            //console.log(indexRight);
-                        }
-                    }
-                }
-            
-            });
-        }
-
-        function myFunction(){
-            for(var i=0;i < indexRight.length;i++){
-                var img = document.getElementById(indexRight[i]);
-                img.style.border = "thick solid #0000FF";
-            }
-            console.log(indexRight.length);
-        }
-        function start(){
-            if(number <= 2){
-                setTimeout(myFunction, 180000);
-            }else if(number <= 4){
-
-            }else{
-
-            }
-        }
-
-        function finish(){
-
-        }
-    </script>
 </body>
 
 </html>
