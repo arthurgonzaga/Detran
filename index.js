@@ -161,9 +161,9 @@ function seeResults() {
         img.src = "images/2.png";
     }
 
-    var alert = setTimeout(function(){
+    var alertBoolean = setTimeout(function(){
         alert("Acertos: "+ indexRight.length+"\n"
             + "Erros: "+ indexWrong.length);
-        clearTimeout(alert);
-    }, 500);
+        clearTimeout(alertBoolean);
+    }, 1000);
 }
